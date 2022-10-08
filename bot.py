@@ -5,6 +5,7 @@ from discord.ext.commands import Bot
 import discord
 from discord.ext import commands,tasks 
 import time
+import random
 
 BOT_PREFIX = "`"
 TOKEN = "MTAyNjQ5NzMyMjAwMTEwOTAyMg.GOiYn2.JQend8HmDRgnUAGzA6rYGPSMjYVfKbEtmeEVJk"
@@ -52,6 +53,13 @@ async def pinger(ctx):
                 brief="tells who the bot owner is")
 async def owner(ctx):
     await ctx.channel.send("the owner of the bot is AngelLoves8008s#6969")
+
+@client.command(name='truth or lie',
+                description="tells you if it's a lie or if it's the truth",
+                brief="truth or lie")
+async def tol(ctx):
+    tol = ["Truth", "Lie"]
+    await ctx.channel.send(f"What you said is a: {random.choice(tol)}")
 
 @client.event
 async def on_ready():
