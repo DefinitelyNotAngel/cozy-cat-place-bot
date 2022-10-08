@@ -57,9 +57,17 @@ async def owner(ctx):
 @client.command(name='tol',
                 description="tells you if it's a lie or if it's the truth",
                 brief="truth or lie")
-async def tol(ctx):
+async def tol(message, ctx):
     tol = ["the Truth", "a Lie"]
+    ctx = await client.get_context(message)
     await ctx.channel.send(f"What you said is: {random.choice(tol)}")
+
+@client.command(name="math",
+                description="does math for you",
+                brief="math")
+async def math(message, ctx):
+    ctx = await client.get_context(message)
+    await ctx.channel.send(message)
 
 @client.event
 async def on_ready():
