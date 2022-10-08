@@ -47,6 +47,12 @@ async def ding(ctx):
 async def pinger(ctx):
     await ctx.channel.send(ctx.message.author.mention + ' get pinged fucker')
 
+@client.command(name='owner',
+                desciption="tells you who the owner of the bot is",
+                brief="tells who the bot owner is")
+async def owner(ctx):
+    await ctx.channel.send("the owner of the bot is AngelLoves8008s#6969")
+
 @client.event
 async def on_ready():
     print('bot is up and running')
