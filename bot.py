@@ -58,8 +58,8 @@ async def owner(ctx):
                 description="tells you if it's a lie or if it's the truth",
                 brief="truth or lie")
 async def tol(ctx):
-    tol = ["Truth", "Lie"]
-    await ctx.channel.send(f"What you said is a: {random.choice(tol)}")
+    tol = ["the True", "a Lie"]
+    await ctx.channel.send(f"What you said is: {random.choice(tol)}")
 
 @client.event
 async def on_ready():
