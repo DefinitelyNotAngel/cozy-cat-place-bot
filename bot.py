@@ -54,7 +54,7 @@ async def pinger(ctx):
 async def owner(ctx):
     await ctx.channel.send("the owner of the bot is AngelLoves8008s#6969")
 
-@client.command(name='truth or lie',
+@client.command(name='tol',
                 description="tells you if it's a lie or if it's the truth",
                 brief="truth or lie")
 async def tol(ctx):
