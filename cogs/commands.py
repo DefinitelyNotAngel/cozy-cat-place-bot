@@ -14,7 +14,7 @@ class all_commands(commands.Cog):
                 description="kinda shows what latency the bot has",
                 brief="base ping command",
                 aliases=['pp'])
-async def ping(ctx):
+async def ping(self, ctx):
     await ctx.channel.send(f'Pong! Responded in {round(commands.latency * 1000)} ms')
 
 
@@ -23,7 +23,7 @@ async def ping(ctx):
                 brief="test",
                 aliases=['t'],
                 pass_context=True)
-async def test(ctx):
+async def test(self, ctx):
 #   possible_responses = [
 #        'this worked!'
 #        'this worked 2!'
@@ -34,14 +34,14 @@ async def test(ctx):
                 description="another form for the ping command",
                 brief="other form of ping",
                 aliases=['dd'])
-async def ding(ctx):
+async def ding(self, ctx):
     await ctx.channel.send(f'dong! Responded in {round(commands.latency * 1000)} ms')
 
 @commands.command(name='pinger', # pinger 
                 description="pings you lmao",
                 brief="pings you",
                 aliases=['pmp'])
-async def pinger(ctx):
+async def pinger(self, ctx):
     await ctx.channel.send(ctx.message.author.mention + ' get pinged fucker')
 
 
