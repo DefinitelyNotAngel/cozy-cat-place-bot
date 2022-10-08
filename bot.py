@@ -1,35 +1,51 @@
 #import pynacl
-import os
+import random
+import asyncio
+from discord.ext.commands import Bot
 import discord
-from discord.ext import commands
-from discord.ext.commands import Context
+from discord.ext import commands,tasks 
+import time
 
 BOT_PREFIX = "`"
 TOKEN = "MTAyNjQ5NzMyMjAwMTEwOTAyMg.GOiYn2.JQend8HmDRgnUAGzA6rYGPSMjYVfKbEtmeEVJk"
 
 intents = discord.Intents().all()
 
-client = commands.Bot(command_prefix=BOT_PREFIX, intents = intents)
+client = Bot(command_prefix=BOT_PREFIX, intents = intents)
 
-@client.command()
-async def load(ctx: Context, extension):
-    client.load_extension(f'cogs.{extension}')
-    await ctx.send("Loaded Cog")
+@client.command(name='ping',  # ping
+                description="kinda shows what latency the bot has",
+                brief="base ping command",
+                aliases=['pp'])
+async def ping(ctx):
+    await ctx.channel.send(f'Pong! Responded in {round(client.latency * 1000)} ms')
 
-@client.command()
-async def unload(ctx: Context, extension):
-    client.unload_extension(f'cogs.{extension}')
-    await ctx.send("Unloaded Cog")
 
-@client.command()
-async def reload(ctx: Context, extension):
-    client.unload_extension(f'cogs.{extension}')
-    client.load_extension(f'cogs.{extension}')
-    await ctx.send("Reloaded Cog")
+@client.command(name='test',  # test
+                description="just a test",
+                brief="test",
+                aliases=['t'],
+                pass_context=True)
+async def test(ctx):
+#   possible_responses = [
+#        'this worked!'
+#        'this worked 2!'
+#    ]
+    await ctx.channel.send('this finally works!!!!') # has no attribute say???? #fixedish #! need to fix the command not picking a random choice the command: random.choice(possible.responses)
 
-for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
-        client.load_extension(f'cogs.{filename[0:-3]}')
+@client.command(name='ding',  # ding lmao
+                description="another form for the ping command",
+                brief="other form of ping",
+                aliases=['dd'])
+async def ding(ctx):
+    await ctx.channel.send(f'dong! Responded in {round(client.latency * 1000)} ms')
+
+@client.command(name='pinger', # pinger 
+                description="pings you lmao",
+                brief="pings you",
+                aliases=['pmp'])
+async def pinger(ctx):
+    await ctx.channel.send(ctx.message.author.mention + ' get pinged fucker')
 
 @client.event
 async def on_ready():
