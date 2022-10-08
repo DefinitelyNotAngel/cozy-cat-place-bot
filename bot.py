@@ -57,17 +57,43 @@ async def owner(ctx):
 @client.command(name='tol',
                 description="tells you if it's a lie or if it's the truth",
                 brief="truth or lie")
-async def tol(message, ctx):
+async def tol(ctx):
     tol = ["the Truth", "a Lie"]
-    ctx = await client.get_context(message)
     await ctx.channel.send(f"What you said is: {random.choice(tol)}")
 
-@client.command(name="math",
+@client.command(name='math',
                 description="does math for you",
                 brief="math")
-async def math(message, ctx):
-    ctx = await client.get_context(message)
-    await ctx.channel.send(message)
+async def calc(ctx):
+    def check(m):
+        return len(m.content) >= 1 and m.author != client.user
+
+    await ctx.send("Number 1: ")
+    number_1 = await client.wait_for("message", check=check)
+    await ctx.send("Operator: ")
+    operator = await client.wait_for("message", check=check)
+    await ctx.send("number 2: ")
+    number_2 = await client.wait_for("message", check=check)
+    try:
+        number_1 = float(number_1.content)
+        operator = operator.content
+        number_2 = float(number_2.content)
+    except:
+        await ctx.send("invalid input")
+        return
+    output = None
+    if operator == "+":
+        output = number_1 + number_2
+    elif operator == "-":
+        output = number_1 - number_2
+    elif operator == "/":
+        output = number_1 / number_2
+    elif operator == "*":
+        output = number_1 * number_2
+    else:
+        await ctx.send("invalid input")
+        return
+    await ctx.send("Answer: " + str(output))
 
 @client.event
 async def on_ready():
