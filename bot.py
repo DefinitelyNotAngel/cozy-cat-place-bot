@@ -106,7 +106,9 @@ async def calc(ctx):
         return
     await ctx.send("Answer: " + str(output))
 
-@client.command()
+@client.command(name="meme",
+                description="sends random memes or something idk",
+                brief="memes woho")
 async def meme(ctx):
     content = get("https://meme-api.herokuapp.com/gimme").text
     data = json.loads(content,)
