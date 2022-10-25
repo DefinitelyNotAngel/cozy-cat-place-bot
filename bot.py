@@ -6,6 +6,17 @@ import discord
 from discord.ext import commands,tasks 
 import time
 import random
+#import praw
+from requests import get
+import json
+
+#reddit = praw.Reddit(
+#    client_id="7SzpmyJiLnHwZ7GoglcIsw",
+#    client_secret="3p6fzi8bEWfze_J0WSEBJcm-xEfn_A",
+#    password="Angelstefan13200913",
+#    user_agent="meme thing by u/MyPictureIsACat",
+#    username="MyPictureIsACat",
+#)
 
 BOT_PREFIX = "`"
 TOKEN = "MTAyNjQ5NzMyMjAwMTEwOTAyMg.GOiYn2.JQend8HmDRgnUAGzA6rYGPSMjYVfKbEtmeEVJk"
@@ -94,6 +105,13 @@ async def calc(ctx):
         await ctx.send("invalid input")
         return
     await ctx.send("Answer: " + str(output))
+
+@client.command()
+async def meme(ctx):
+    content = get("https://meme-api.herokuapp.com/gimme").text
+    data = json.loads(content,)
+    meme = discord.Embed(title=f"{data['title']}", Color = discord.Color.random()).set_image(url=f"{data['url']}")
+    await ctx.reply(embed=meme)
 
 @client.event
 async def on_ready():
