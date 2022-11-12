@@ -9,6 +9,7 @@ import random
 #import praw
 from requests import get
 import json
+import interactions 
 
 #reddit = praw.Reddit(
 #    client_id="7SzpmyJiLnHwZ7GoglcIsw",
@@ -24,6 +25,13 @@ TOKEN = "MTAyNjQ5NzMyMjAwMTEwOTAyMg.GOiYn2.JQend8HmDRgnUAGzA6rYGPSMjYVfKbEtmeEVJ
 intents = discord.Intents().all()
 
 client = Bot(command_prefix=BOT_PREFIX, intents = intents)
+
+@Bot.command(
+            name="badge",
+            description="it's for getting the badge lol"
+)
+async def badge(ctx: interactions.CommandContext):
+    await ctx.send("imi bag pula-n ma-ta ez")
 
 @client.command(name='ping',  # ping
                 description="kinda shows what latency the bot has",
@@ -105,6 +113,13 @@ async def calc(ctx):
         await ctx.send("invalid input")
         return
     await ctx.send("Answer: " + str(output))
+
+@client.command(name="playlist?",
+                description="gives u a playlist me and two other people made lol",
+                brief="yes")
+async def playlist(ctx):
+    await ctx.send("https://open.spotify.com/playlist/7oYl8DFyJ66atXMn9d6miY?si=40baa062a2d64fc7")
+    
 
 #@client.command(name="meme",     # these don't work for some dumb ass reason
 #                description="sends random memes or something idk",
