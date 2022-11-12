@@ -9,7 +9,6 @@ import random
 #import praw
 from requests import get
 import json
-import interactions 
 
 #reddit = praw.Reddit(
 #    client_id="7SzpmyJiLnHwZ7GoglcIsw",
@@ -25,13 +24,6 @@ TOKEN = "MTAyNjQ5NzMyMjAwMTEwOTAyMg.GOiYn2.JQend8HmDRgnUAGzA6rYGPSMjYVfKbEtmeEVJ
 intents = discord.Intents().all()
 
 client = Bot(command_prefix=BOT_PREFIX, intents = intents)
-
-@Bot.command(
-            name="badge",
-            description="it's for getting the badge lol"
-)
-async def badge(ctx: interactions.CommandContext):
-    await ctx.send("imi bag pula-n ma-ta ez")
 
 @client.command(name='ping',  # ping
                 description="kinda shows what latency the bot has",
