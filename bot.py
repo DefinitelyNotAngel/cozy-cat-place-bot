@@ -8,7 +8,8 @@ import time
 import random
 #import praw
 from requests import get
-import json
+#import json
+from discord import app_commands, Intents, Client, Interaction
 
 #reddit = praw.Reddit(
 #    client_id="7SzpmyJiLnHwZ7GoglcIsw",
@@ -111,6 +112,12 @@ async def calc(ctx):
                 brief="yes")
 async def playlist(ctx):
     await ctx.send("https://open.spotify.com/playlist/7oYl8DFyJ66atXMn9d6miY?si=40baa062a2d64fc7")
+
+@client.command(name="help_len",
+                description="hi",
+                brief="hi")
+async def help_len(ctx):
+    await ctx.send("*helps len*")
     
 
 #@client.command(name="meme",     # these don't work for some dumb ass reason
