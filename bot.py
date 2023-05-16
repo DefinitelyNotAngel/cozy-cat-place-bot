@@ -14,7 +14,7 @@ from discord import app_commands, Intents, Client, Interaction
 #reddit = praw.Reddit(
 #    client_id="7SzpmyJiLnHwZ7GoglcIsw",
 #    client_secret="3p6fzi8bEWfze_J0WSEBJcm-xEfn_A",
-#    password="Angelstefan13200913",
+#    password="",
 #    user_agent="meme thing by u/MyPictureIsACat",
 #    username="MyPictureIsACat",
 #)
@@ -34,17 +34,17 @@ async def ping(ctx):
     await ctx.channel.send(f'Pong! Responded in {round(client.latency * 1000)} ms')
 
 
-@client.command(name='test',  # test
-                description="just a test",
-                brief="test",
-                aliases=['t'],
-                pass_context=True)
-async def test(ctx):
+#@client.command(name='working with tol',  # test
+#                description="just a test",
+#                brief="test",
+#                aliases=['t'],
+#                pass_context=True)
+#async def test(ctx):
 #   possible_responses = [
 #        'this worked!'
 #        'this worked 2!'
 #    ]
-    await ctx.channel.send('this finally works!!!!') # has no attribute say???? #fixedish #! need to fix the command not picking a random choice the command: random.choice(possible.responses)
+#    await ctx.channel.send('this finally works!!!!') # has no attribute say???? #fixedish #! need to fix the command not picking a random choice the command: random.choice(possible.responses)
 
 @client.command(name='ding',  # ding lmao
                 description="another form for the ping command",
@@ -64,7 +64,7 @@ async def pinger(ctx):
                 desciption="tells you who the owner of the bot is",
                 brief="tells who the bot owner is")
 async def owner(ctx):
-    await ctx.channel.send("the owner of the bot is AngelLoves8008s#6969")
+    await ctx.channel.send("the owner of the bot is <@!946431916553412678>")
 
 @client.command(name='tol',
                 description="tells you if it's a lie or if it's the truth",
@@ -111,13 +111,21 @@ async def calc(ctx):
                 description="gives u a playlist me and two other people made lol",
                 brief="yes")
 async def playlist(ctx):
-    await ctx.send("https://open.spotify.com/playlist/7oYl8DFyJ66atXMn9d6miY?si=40baa062a2d64fc7")
+    await ctx.send("https://open.spotify.com/playlist/0ar8hbT78OOYRC5edj7sxE?si=b36cec771d4a4dbd")
 
-@client.command(name="help_len",
-                description="hi",
-                brief="hi")
-async def help_len(ctx):
-    await ctx.send("*helps len*")
+@client.command(name="angel",
+                description="test",
+                brief="something")
+async def angel(ctx):
+    await ctx.channel.send(ctx.message.author.mention)
+
+@client.command(name="test",
+                description="another test thing",
+                brief="yeah",
+                category="test")
+async def test(ctx):
+    luck = ["<https://4ng3l.is-raping.me/AcM985JX>", "<https://4ng3l.gorgeous.wtf/ctVH3j0I>", "<https://4ng3l.is-raping.me/aQYp03La>"]
+    await ctx.send(f"test your luck {random.choice(luck)}")
     
 
 #@client.command(name="meme",     # these don't work for some dumb ass reason
