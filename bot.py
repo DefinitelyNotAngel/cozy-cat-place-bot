@@ -140,3 +140,5 @@ async def test(ctx):
 @client.event
 async def on_ready():
     print('bot is up and running')
+
+client.run(TOKEN)
