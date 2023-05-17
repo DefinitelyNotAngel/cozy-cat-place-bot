@@ -1,15 +1,18 @@
-#import pynacl
 import random
 import asyncio
+
 from discord.ext.commands import Bot
 import discord
 from discord.ext import commands,tasks 
+from discord import app_commands, Intents, Client, Interaction
+
 import time
 import random
-#import praw
 from requests import get
+
 #import json
-from discord import app_commands, Intents, Client, Interaction
+#import praw
+#import pynacl
 
 #reddit = praw.Reddit(
 #    client_id="7SzpmyJiLnHwZ7GoglcIsw",
@@ -69,9 +72,10 @@ async def owner(ctx):
 @client.command(name='tol',
                 description="tells you if it's a lie or if it's the truth",
                 brief="truth or lie")
-async def tol(ctx):
-    tol = ["the Truth", "a Lie"]
-    await ctx.channel.send(f"What you said is: {random.choice(tol)}")
+async def tol(ctx, *args):
+    tol = ["is the truth", "is a lie"]
+    arguments = ' '.join(args)
+    await ctx.channel.send(f"\"{arguments}\" {random.choice(tol)}")
 
 @client.command(name='math',
                 description="does math for you",
