@@ -120,7 +120,9 @@ async def playlist(ctx):
 @client.command(name="angel",
                 description="test",
                 brief="something")
-async def angel(ctx):
+async def angel(ctx , msg):
+#    if msg.content.startswith("angel"):
+#   message = "angel is a hoe"
     await ctx.channel.send(ctx.message.author.mention)
 
 @client.command(name="test",
