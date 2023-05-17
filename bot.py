@@ -23,7 +23,7 @@ from requests import get
 #)
 
 BOT_PREFIX = "`"
-TOKEN = "MTAyNjQ5NzMyMjAwMTEwOTAyMg.GOiYn2.JQend8HmDRgnUAGzA6rYGPSMjYVfKbEtmeEVJk"
+TOKEN = ""
 
 intents = discord.Intents().all()
 
